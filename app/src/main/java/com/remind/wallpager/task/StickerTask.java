@@ -8,7 +8,6 @@ import android.graphics.Matrix;
 import android.os.AsyncTask;
 import android.os.Build;
 
-import com.remind.main.MainActivity;
 import com.remind.wallpager.ui.WallPagerEditActivity;
 import com.remind.wallpager.util.Matrix3;
 

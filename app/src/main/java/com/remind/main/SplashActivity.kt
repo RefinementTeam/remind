@@ -3,6 +3,7 @@ package com.remind.main
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import com.remind.R
 
 /**
@@ -14,6 +15,8 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        startActivity(Intent(this,MainActivity::class.java))
+        Handler().postDelayed(Runnable {
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        }, 2000)
     }
 }
