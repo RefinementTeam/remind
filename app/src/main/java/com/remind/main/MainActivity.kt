@@ -15,9 +15,9 @@ import test.com.sqlitedemo.work.WorkTool
  */
 class MainActivity : AppCompatActivity() , View.OnClickListener{
 
-    lateinit var fab1: FloatingActionButton
-    lateinit var fab2: FloatingActionButton
-    lateinit var menu_red: FloatingActionMenu
+    private lateinit var fab1: FloatingActionButton
+    private lateinit var fab2: FloatingActionButton
+    private lateinit var menu_red: FloatingActionMenu
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +29,6 @@ class MainActivity : AppCompatActivity() , View.OnClickListener{
 
         fab1.setOnClickListener(this)
         fab2.setOnClickListener(this)
-
-        val bt: Button = findViewById(R.id.bt)
-
-        bt.setOnClickListener {
-            WorkTool.getInstence().executeWork()
-        }
 
     }
 
