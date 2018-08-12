@@ -28,7 +28,7 @@
         <service android:name=".service.TestService" />
 
         <activity android:name=".wallpager.ui.WallPagerEditActivity" />
-        <activity android:name="com.remind.main.ClockActivity"></activity>
+        <activity android:name="com.remind.clock.ClockActivity"/>
     </application>
 
 </manifest>

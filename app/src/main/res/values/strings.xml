@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Remind</string>
+    <string name="app_name">Bee Mo</string>
+
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+
+    <string name="main_add_clock">New Clock</string>
+    <string name="main_add_wallpaper">New WallPaper</string>
 </resources>

@@ -24,6 +24,8 @@ import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
+import com.remind.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,48 +125,48 @@ public class FloatingActionMenu extends ViewGroup {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        TypedArray attr = context.obtainStyledAttributes(attrs, com.github.clans.fab.R.styleable.FloatingActionMenu, 0, 0);
-        mButtonSpacing = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_buttonSpacing, mButtonSpacing);
-        mLabelsMargin = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_margin, mLabelsMargin);
-        mLabelsPosition = attr.getInt(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_position, LABELS_POSITION_LEFT);
-        mLabelsShowAnimation = attr.getResourceId(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_showAnimation,
-                mLabelsPosition == LABELS_POSITION_LEFT ? com.github.clans.fab.R.anim.fab_slide_in_from_right : com.github.clans.fab.R.anim.fab_slide_in_from_left);
-        mLabelsHideAnimation = attr.getResourceId(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_hideAnimation,
-                mLabelsPosition == LABELS_POSITION_LEFT ? com.github.clans.fab.R.anim.fab_slide_out_to_right : com.github.clans.fab.R.anim.fab_slide_out_to_left);
-        mLabelsPaddingTop = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_paddingTop, mLabelsPaddingTop);
-        mLabelsPaddingRight = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_paddingRight, mLabelsPaddingRight);
-        mLabelsPaddingBottom = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_paddingBottom, mLabelsPaddingBottom);
-        mLabelsPaddingLeft = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_paddingLeft, mLabelsPaddingLeft);
-        mLabelsTextColor = attr.getColorStateList(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_textColor);
+        TypedArray attr = context.obtainStyledAttributes(attrs, R.styleable.FloatingActionMenu, 0, 0);
+        mButtonSpacing = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_buttonSpacing, mButtonSpacing);
+        mLabelsMargin = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_margin, mLabelsMargin);
+        mLabelsPosition = attr.getInt(R.styleable.FloatingActionMenu_menu_labels_position, LABELS_POSITION_LEFT);
+        mLabelsShowAnimation = attr.getResourceId(R.styleable.FloatingActionMenu_menu_labels_showAnimation,
+                mLabelsPosition == LABELS_POSITION_LEFT ? R.anim.fab_slide_in_from_right : R.anim.fab_slide_in_from_left);
+        mLabelsHideAnimation = attr.getResourceId(R.styleable.FloatingActionMenu_menu_labels_hideAnimation,
+                mLabelsPosition == LABELS_POSITION_LEFT ? R.anim.fab_slide_out_to_right : R.anim.fab_slide_out_to_left);
+        mLabelsPaddingTop = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_paddingTop, mLabelsPaddingTop);
+        mLabelsPaddingRight = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_paddingRight, mLabelsPaddingRight);
+        mLabelsPaddingBottom = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_paddingBottom, mLabelsPaddingBottom);
+        mLabelsPaddingLeft = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_paddingLeft, mLabelsPaddingLeft);
+        mLabelsTextColor = attr.getColorStateList(R.styleable.FloatingActionMenu_menu_labels_textColor);
         // set default value if null same as for textview
         if (mLabelsTextColor == null) {
             mLabelsTextColor = ColorStateList.valueOf(Color.WHITE);
         }
-        mLabelsTextSize = attr.getDimension(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_textSize, getResources().getDimension(com.github.clans.fab.R.dimen.labels_text_size));
-        mLabelsCornerRadius = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_cornerRadius, mLabelsCornerRadius);
-        mLabelsShowShadow = attr.getBoolean(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_showShadow, true);
-        mLabelsColorNormal = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_colorNormal, 0xFF333333);
-        mLabelsColorPressed = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_colorPressed, 0xFF444444);
-        mLabelsColorRipple = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_colorRipple, 0x66FFFFFF);
-        mMenuShowShadow = attr.getBoolean(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_showShadow, true);
-        mMenuShadowColor = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_shadowColor, 0x66000000);
-        mMenuShadowRadius = attr.getDimension(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_shadowRadius, mMenuShadowRadius);
-        mMenuShadowXOffset = attr.getDimension(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_shadowXOffset, mMenuShadowXOffset);
-        mMenuShadowYOffset = attr.getDimension(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_shadowYOffset, mMenuShadowYOffset);
-        mMenuColorNormal = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_colorNormal, 0xFFDA4336);
-        mMenuColorPressed = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_colorPressed, 0xFFE75043);
-        mMenuColorRipple = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_colorRipple, 0x99FFFFFF);
-        mAnimationDelayPerItem = attr.getInt(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_animationDelayPerItem, 50);
-        mIcon = attr.getDrawable(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_icon);
+        mLabelsTextSize = attr.getDimension(R.styleable.FloatingActionMenu_menu_labels_textSize, getResources().getDimension(R.dimen.labels_text_size));
+        mLabelsCornerRadius = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_cornerRadius, mLabelsCornerRadius);
+        mLabelsShowShadow = attr.getBoolean(R.styleable.FloatingActionMenu_menu_labels_showShadow, true);
+        mLabelsColorNormal = attr.getColor(R.styleable.FloatingActionMenu_menu_labels_colorNormal, 0xFF333333);
+        mLabelsColorPressed = attr.getColor(R.styleable.FloatingActionMenu_menu_labels_colorPressed, 0xFF444444);
+        mLabelsColorRipple = attr.getColor(R.styleable.FloatingActionMenu_menu_labels_colorRipple, 0x66FFFFFF);
+        mMenuShowShadow = attr.getBoolean(R.styleable.FloatingActionMenu_menu_showShadow, true);
+        mMenuShadowColor = attr.getColor(R.styleable.FloatingActionMenu_menu_shadowColor, 0x66000000);
+        mMenuShadowRadius = attr.getDimension(R.styleable.FloatingActionMenu_menu_shadowRadius, mMenuShadowRadius);
+        mMenuShadowXOffset = attr.getDimension(R.styleable.FloatingActionMenu_menu_shadowXOffset, mMenuShadowXOffset);
+        mMenuShadowYOffset = attr.getDimension(R.styleable.FloatingActionMenu_menu_shadowYOffset, mMenuShadowYOffset);
+        mMenuColorNormal = attr.getColor(R.styleable.FloatingActionMenu_menu_colorNormal, 0xFFDA4336);
+        mMenuColorPressed = attr.getColor(R.styleable.FloatingActionMenu_menu_colorPressed, 0xFFE75043);
+        mMenuColorRipple = attr.getColor(R.styleable.FloatingActionMenu_menu_colorRipple, 0x99FFFFFF);
+        mAnimationDelayPerItem = attr.getInt(R.styleable.FloatingActionMenu_menu_animationDelayPerItem, 50);
+        mIcon = attr.getDrawable(R.styleable.FloatingActionMenu_menu_icon);
         if (mIcon == null) {
-            mIcon = getResources().getDrawable(com.github.clans.fab.R.drawable.fab_add);
+            mIcon = getResources().getDrawable(R.mipmap.fab_add);
         }
-        mLabelsSingleLine = attr.getBoolean(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_singleLine, false);
-        mLabelsEllipsize = attr.getInt(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_ellipsize, 0);
-        mLabelsMaxLines = attr.getInt(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_maxLines, -1);
-        mMenuFabSize = attr.getInt(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_fab_size, FloatingActionButton.SIZE_NORMAL);
-        mLabelsStyle = attr.getResourceId(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_style, 0);
-        String customFont = attr.getString(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_customFont);
+        mLabelsSingleLine = attr.getBoolean(R.styleable.FloatingActionMenu_menu_labels_singleLine, false);
+        mLabelsEllipsize = attr.getInt(R.styleable.FloatingActionMenu_menu_labels_ellipsize, 0);
+        mLabelsMaxLines = attr.getInt(R.styleable.FloatingActionMenu_menu_labels_maxLines, -1);
+        mMenuFabSize = attr.getInt(R.styleable.FloatingActionMenu_menu_fab_size, FloatingActionButton.SIZE_NORMAL);
+        mLabelsStyle = attr.getResourceId(R.styleable.FloatingActionMenu_menu_labels_style, 0);
+        String customFont = attr.getString(R.styleable.FloatingActionMenu_menu_labels_customFont);
         try {
             if (!TextUtils.isEmpty(customFont)) {
                 mCustomTypefaceFromFont = Typeface.createFromAsset(getContext().getAssets(), customFont);
@@ -172,16 +174,16 @@ public class FloatingActionMenu extends ViewGroup {
         } catch (RuntimeException ex) {
             throw new IllegalArgumentException("Unable to load specified custom font: " + customFont, ex);
         }
-        mOpenDirection = attr.getInt(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_openDirection, OPEN_UP);
-        mBackgroundColor = attr.getColor(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_backgroundColor, Color.TRANSPARENT);
+        mOpenDirection = attr.getInt(R.styleable.FloatingActionMenu_menu_openDirection, OPEN_UP);
+        mBackgroundColor = attr.getColor(R.styleable.FloatingActionMenu_menu_backgroundColor, Color.TRANSPARENT);
 
-        if (attr.hasValue(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_fab_label)) {
+        if (attr.hasValue(R.styleable.FloatingActionMenu_menu_fab_label)) {
             mUsingMenuLabel = true;
-            mMenuLabelText = attr.getString(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_fab_label);
+            mMenuLabelText = attr.getString(R.styleable.FloatingActionMenu_menu_fab_label);
         }
 
-        if (attr.hasValue(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_padding)) {
-            int padding = attr.getDimensionPixelSize(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_labels_padding, 0);
+        if (attr.hasValue(R.styleable.FloatingActionMenu_menu_labels_padding)) {
+            int padding = attr.getDimensionPixelSize(R.styleable.FloatingActionMenu_menu_labels_padding, 0);
             initPadding(padding);
         }
 
@@ -197,11 +199,11 @@ public class FloatingActionMenu extends ViewGroup {
     }
 
     private void initMenuButtonAnimations(TypedArray attr) {
-        int showResId = attr.getResourceId(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_fab_show_animation, com.github.clans.fab.R.anim.fab_scale_up);
+        int showResId = attr.getResourceId(R.styleable.FloatingActionMenu_menu_fab_show_animation, R.anim.fab_scale_up);
         setMenuButtonShowAnimation(AnimationUtils.loadAnimation(getContext(), showResId));
         mImageToggleShowAnimation = AnimationUtils.loadAnimation(getContext(), showResId);
 
-        int hideResId = attr.getResourceId(com.github.clans.fab.R.styleable.FloatingActionMenu_menu_fab_hide_animation, com.github.clans.fab.R.anim.fab_scale_down);
+        int hideResId = attr.getResourceId(R.styleable.FloatingActionMenu_menu_fab_hide_animation, R.anim.fab_scale_down);
         setMenuButtonHideAnimation(AnimationUtils.loadAnimation(getContext(), hideResId));
         mImageToggleHideAnimation = AnimationUtils.loadAnimation(getContext(), hideResId);
     }
@@ -330,7 +332,7 @@ public class FloatingActionMenu extends ViewGroup {
             usedWidth += child.getMeasuredWidth();
             height += child.getMeasuredHeight();
 
-            Label label = (Label) child.getTag(com.github.clans.fab.R.id.fab_label);
+            Label label = (Label) child.getTag(R.id.fab_label);
             if (label != null) {
                 int labelOffset = (mMaxButtonWidth - child.getMeasuredWidth()) / (mUsingMenuLabel ? 1 : 2);
                 int labelUsedWidth = child.getMeasuredWidth() + label.calculateShadowWidth() + mLabelsMargin + labelOffset;
@@ -402,7 +404,7 @@ public class FloatingActionMenu extends ViewGroup {
                 }
             }
 
-            View label = (View) fab.getTag(com.github.clans.fab.R.id.fab_label);
+            View label = (View) fab.getTag(R.id.fab_label);
             if (label != null) {
                 int labelsOffset = (mUsingMenuLabel ? mMaxButtonWidth / 2 : fab.getMeasuredWidth() / 2) + mLabelsMargin;
                 int labelXNearButton = mLabelsPosition == LABELS_POSITION_LEFT
@@ -457,7 +459,7 @@ public class FloatingActionMenu extends ViewGroup {
 
             final FloatingActionButton fab = (FloatingActionButton) getChildAt(i);
 
-            if (fab.getTag(com.github.clans.fab.R.id.fab_label) != null) continue;
+            if (fab.getTag(R.id.fab_label) != null) continue;
 
             addLabel(fab);
 
@@ -526,7 +528,7 @@ public class FloatingActionMenu extends ViewGroup {
         label.setOnClickListener(fab.getOnClickListener());
 
         addView(label);
-        fab.setTag(com.github.clans.fab.R.id.fab_label, label);
+        fab.setTag(R.id.fab_label, label);
     }
 
     private void setLabelEllipsize(Label label) {
@@ -654,7 +656,7 @@ public class FloatingActionMenu extends ViewGroup {
                                 fab.show(animate);
                             }
 
-                            Label label = (Label) fab.getTag(com.github.clans.fab.R.id.fab_label);
+                            Label label = (Label) fab.getTag(R.id.fab_label);
                             if (label != null && label.isHandleVisibilityChanges()) {
                                 label.show(animate);
                             }
@@ -710,7 +712,7 @@ public class FloatingActionMenu extends ViewGroup {
                                 fab.hide(animate);
                             }
 
-                            Label label = (Label) fab.getTag(com.github.clans.fab.R.id.fab_label);
+                            Label label = (Label) fab.getTag(R.id.fab_label);
                             if (label != null && label.isHandleVisibilityChanges()) {
                                 label.hide(animate);
                             }
@@ -984,7 +986,7 @@ public class FloatingActionMenu extends ViewGroup {
 
     public void removeAllMenuButtons() {
         close(true);
-        
+
         List<FloatingActionButton> viewsToRemove = new ArrayList<>();
         for (int i = 0; i < getChildCount(); i++) {
             View v = getChildAt(i);

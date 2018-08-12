@@ -1,13 +1,13 @@
-package com.remind.main
+package com.remind.clock
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.remind.BaseActivity
 import com.remind.R
 
 /**
  * 闹钟界面
  */
-class ClockActivity : AppCompatActivity() {
+class ClockActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

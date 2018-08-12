@@ -1,42 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".main.MainActivity">
 
-    <com.github.clans.fab.FloatingActionMenu
+    <RelativeLayout
+        android:id="@+id/main_title_re"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#f6f8f9">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textColor="#282d34"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/main_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_title_re" />
+
+    <com.remind.view.floatbutton.FloatingActionMenu
         android:id="@+id/menu_red"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        fab:menu_backgroundColor="#ccffffff"
-        fab:menu_fab_label="Menu label"
+        fab:menu_backgroundColor="#77000000"
+        fab:menu_colorNormal="#2D95FF"
+        fab:menu_colorPressed="#2D95FF"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_singleLine="true">
 
-        <com.github.clans.fab.FloatingActionButton
+        <com.remind.view.floatbutton.FloatingActionButton
             android:id="@+id/fab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_edit"
-            fab:fab_label="Disabled"
-            fab:fab_size="mini" />
+            fab:fab_colorNormal="#2D95FF"
+            fab:fab_label="@string/main_add_clock" />
 
-        <com.github.clans.fab.FloatingActionButton
+        <com.remind.view.floatbutton.FloatingActionButton
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_edit"
-            fab:fab_label="Remove button"
-            fab:fab_size="mini" />
+            fab:fab_colorNormal="#2D95FF"
+            fab:fab_label="@string/main_add_wallpaper" />
 
-    </com.github.clans.fab.FloatingActionMenu>
+    </com.remind.view.floatbutton.FloatingActionMenu>
 
 </RelativeLayout>

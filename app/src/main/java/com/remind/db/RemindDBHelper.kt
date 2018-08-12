@@ -26,9 +26,9 @@ class RemindDBHelper private constructor(context: Context?, name: String?, facto
 
     override fun onCreate(db: SQLiteDatabase?) {
         //创建过得提醒保存
-        db?.execSQL("create table creatremind(_id integer PRIMARY KEY AUTOINCREMENT,finishtime long,content text,ring text,autochange integer,notify integer)")
+        db?.execSQL("create table creatremind(_id integer PRIMARY KEY AUTOINCREMENT,finishtime long,content text,ring text,autochange integer,notify integer,imagepath text,classify integer)")
         //正在执行的提醒
-        db?.execSQL("create table executeremind(_id integer PRIMARY KEY AUTOINCREMENT,finishtime long,content text,ring text,autochange integer,notify integer)")
+        db?.execSQL("create table executeremind(_id integer PRIMARY KEY AUTOINCREMENT,finishtime long,content text,ring text,autochange integer,notify integer,imagepath text,classify integer)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -58,7 +58,13 @@ class RemindDBHelper private constructor(context: Context?, name: String?, facto
             //notify
             val notifyid = cursor.getColumnIndex("notify")
             val notify = cursor.getInt(notifyid)
-            val remindContent = RemindContent(id, finishtime, content, ring, autochange, notify)
+            //image path
+            val imagepathid = cursor.getColumnIndex("imagepath")
+            val imagepath = cursor.getString(imagepathid)
+            //classify
+            val classifyid = cursor.getColumnIndex("classify")
+            val classify = cursor.getInt(classifyid)
+            val remindContent = RemindContent(id, finishtime, content, ring, autochange, notify, imagepath, classify)
             list.add(remindContent)
         }
         cursor.close()
@@ -67,15 +73,16 @@ class RemindDBHelper private constructor(context: Context?, name: String?, facto
 
     //保存提醒
     fun addRemind(remindContent: RemindContent) {
-        sql.execSQL("insert into creatremind(finishtime,content,ring,autochange,notify) values(?,?,?,?,?)",
+        sql.execSQL("insert into creatremind(finishtime,content,ring,autochange,notify,imagepath,classify) values(?,?,?,?,?,?,?)",
                 arrayOf<String>(remindContent.finishTime.toString(), remindContent.content, remindContent.ring, remindContent.autoChange.toString()
-                        , remindContent.notify.toString()))
+                        , remindContent.notify.toString(), remindContent.imagePath, remindContent.remindClassify.toString()))
     }
 
     //修改提醒
     fun changeRemind(remindContent: RemindContent) {
-        sql.execSQL("UPDATE creatremind SET finishtime = ?,content = ?,ring = ?,autochange = ?,notify = ? WHERE _id = ?",
-                arrayOf<String>(remindContent.finishTime.toString(), remindContent.content, remindContent.ring, remindContent.autoChange.toString(), remindContent.notify.toString(), remindContent.id.toString()))
+        sql.execSQL("UPDATE creatremind SET finishtime = ?,content = ?,ring = ?,autochange = ?,notify = ?,imagepath = ?,classify = ? WHERE _id = ?",
+                arrayOf<String>(remindContent.finishTime.toString(), remindContent.content, remindContent.ring, remindContent.autoChange.toString(), remindContent.notify.toString(), remindContent.id.toString()
+                        , remindContent.imagePath, remindContent.remindClassify.toString()))
     }
 
     //删除提醒
@@ -107,7 +114,13 @@ class RemindDBHelper private constructor(context: Context?, name: String?, facto
             //notify
             val notifyid = cursor.getColumnIndex("notify")
             val notify = cursor.getInt(notifyid)
-            val remindContent = RemindContent(id, finishtime, content, ring, autochange, notify)
+            //image path
+            val imagepathid = cursor.getColumnIndex("imagepath")
+            val imagepath = cursor.getString(imagepathid)
+            //classify
+            val classifyid = cursor.getColumnIndex("classify")
+            val classify = cursor.getInt(classifyid)
+            val remindContent = RemindContent(id, finishtime, content, ring, autochange, notify, imagepath, classify)
             list.add(remindContent)
         }
         cursor.close()
@@ -116,9 +129,9 @@ class RemindDBHelper private constructor(context: Context?, name: String?, facto
 
     //新增提醒任务
     fun addExRemind(remindContent: RemindContent) {
-        sql.execSQL("insert into executeremind(finishtime,content,ring,autochange,notify) values(?,?,?,?,?)",
+        sql.execSQL("insert into executeremind(finishtime,content,ring,autochange,notify,imagepath,classify) values(?,?,?,?,?,?,?)",
                 arrayOf<String>(remindContent.finishTime.toString(), remindContent.content, remindContent.ring, remindContent.autoChange.toString()
-                        , remindContent.notify.toString()))
+                        , remindContent.notify.toString(), remindContent.imagePath, remindContent.remindClassify.toString()))
     }
 
     //删除提醒任务
@@ -128,8 +141,9 @@ class RemindDBHelper private constructor(context: Context?, name: String?, facto
 
     //修改提醒任务
     fun changeExRemind(remindContent: RemindContent) {
-        sql.execSQL("UPDATE executeremind SET finishtime = ?,content = ?,ring = ?,autochange = ?,notify = ? WHERE _id = ?",
-                arrayOf<String>(remindContent.finishTime.toString(), remindContent.content, remindContent.ring, remindContent.autoChange.toString(), remindContent.notify.toString(), remindContent.id.toString()))
+        sql.execSQL("UPDATE executeremind SET finishtime = ?,content = ?,ring = ?,autochange = ?,notify = ?,imagepath = ?,classify = ? WHERE _id = ?",
+                arrayOf<String>(remindContent.finishTime.toString(), remindContent.content, remindContent.ring, remindContent.autoChange.toString(), remindContent.notify.toString(), remindContent.id.toString()
+                        , remindContent.imagePath, remindContent.remindClassify.toString()))
     }
 
 }
