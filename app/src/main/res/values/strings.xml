@@ -11,4 +11,14 @@
 
     <string name="main_add_clock">New Clock</string>
     <string name="main_add_wallpaper">New WallPaper</string>
+    <string name="clock_title">Add Alarm</string>
+    <string name="clock_save">Save</string>
+    <string name="clock_content_hint">Enter your thoughts</string>
+    <string name="clock_time_title">Time</string>
+    <string name="clock_repeat">Repeat</string>
+    <string name="clock_weekdays">Weekdays</string>
+    <string name="clock_weekends">Weekends</string>
+    <string name="clock_remind">Remind</string>
+    <string name="clock_remind_way">Remind Way</string>
+    <string name="clock_sound">Sound</string>
 </resources>

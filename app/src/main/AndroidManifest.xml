@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.remind.main.SplashActivity">
+        <activity android:name=".main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,13 +22,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".BaseActivity" />
-        <activity android:name="com.remind.main.MainActivity" />
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".setting.SettingActivity" />
 
         <service android:name=".service.TestService" />
 
         <activity android:name=".wallpager.ui.WallPagerEditActivity" />
-        <activity android:name="com.remind.clock.ClockActivity"/>
+        <activity android:name=".clock.ClockActivity" />
+        <activity android:name=".clock.ClockAudioActivity"></activity>
     </application>
 
 </manifest>
